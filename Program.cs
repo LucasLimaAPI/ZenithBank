@@ -77,7 +77,7 @@ static void TestaMediana(Array array)
 }
 
 int [] valores = {10,58,47,32};
-for (int i = 0; i < 5; i++)// vai retornar um erro por não existir 5 posições no array.
+for (int i = 0; i < 5; i++)// vai retornar um erro por não existir 5 posições no array observar com atenção.
 {
         System.Console.WriteLine(valores[i]);
 }

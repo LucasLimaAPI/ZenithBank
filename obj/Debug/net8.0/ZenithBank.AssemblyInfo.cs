@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZenithBank")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6be8e6e15cac48612e41fb6d672538adce6aa5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d99e240ab3b9f5a90b14b4910211cbea9c051c62")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZenithBank")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZenithBank")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
