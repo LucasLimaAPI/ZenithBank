@@ -1,7 +1,7 @@
 ﻿System.Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento");
 
-//TestaArrayInt();
-//TestaBuscarPalavra();
+TestaArrayInt();
+TestaBuscarPalavra();
 
 void TestaArrayInt()
 {
