@@ -76,3 +76,8 @@ static void TestaMediana(Array array)
     Console.WriteLine($"Com base na amostra a mediana = {mediana}");
 }
 
+int [] valores = {10,58,47,32};
+for (int i = 0; i < 5; i++)// vai retornar um erro por não existir 5 posições no array.
+{
+        System.Console.WriteLine(valores[i]);
+}
