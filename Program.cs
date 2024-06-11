@@ -1,7 +1,7 @@
 ﻿System.Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento");
 
 //TestaArrayInt();
-TestaBuscarPalavra();
+//TestaBuscarPalavra();
 
 void TestaArrayInt()
 {
@@ -48,3 +48,31 @@ void TestaBuscarPalavra()
     
     }
 }
+
+
+Array amostra = Array.CreateInstance(typeof(double), 5);//metodo createinstance precisamos determinar o tipo e o tamanho.
+amostra.SetValue(5.8,0);
+amostra.SetValue(1.5,1);
+amostra.SetValue(7.2,2);
+amostra.SetValue(10,3);
+amostra.SetValue(5.8,4);
+
+TestaMediana(amostra);
+
+void TestaMediana(Array array)
+{
+    if((array == null) || (array.Length == 0))
+    {
+        Console.WriteLine("Array para cálculo da mediana está vazio ou nulo.");
+    }
+
+    double[] numerosOrdenados = (double [])array.Clone();
+    Array.Sort(numerosOrdenados);
+    //[1,8][5,9][6,9][7,1][10]
+
+    int tamanho = numerosOrdenados.Length;
+    int meio = tamanho / 2;
+    double mediana = (tamanho % 2 != 0) ? numerosOrdenados[meio] :(numerosOrdenados[meio] + numerosOrdenados[meio - 1]) / 2;
+    Console.WriteLine($"Com base na amostra a mediana = {mediana}");
+}
+
