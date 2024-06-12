@@ -1,65 +1,67 @@
-﻿System.Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento");
+﻿using ZENITHBANK.Conta;
 
-TestaArrayInt();
-TestaBuscarPalavra();
+Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento.");
+//TestaArrayInt();
+//TestaBuscarPalavra();
 
 void TestaArrayInt()
 {
-    int[] idades = new int[5];// array []
+    int[] idades = new int[5];
     idades[0] = 30;
-    idades[1] = 10;
-    idades[2] = 20;
-    idades[3] = 55;
-    idades[4] = 3;
+    idades[1] = 40;
+    idades[2] = 17;
+    idades[3] = 21;
+    idades[4] = 18;
 
-    System.Console.WriteLine($"Tamanho do Array {idades.Length}"); // vai ler a quantidade de que está dentro do array, no caso seu indice.
+    Console.WriteLine($"Tamanho do Array {idades.Length}");
 
     int acumulador = 0;
     for (int i = 0; i < idades.Length; i++)
     {
         int idade = idades[i];
-        System.Console.WriteLine($"Indice [{i}] = {idade}");
+        Console.WriteLine($"índice [{i}] = {idade}");
         acumulador += idade;
     }
 
     int media = acumulador / idades.Length;
-    System.Console.WriteLine($"Media de idades = {media}");
+    Console.WriteLine($"Média de idades = {media}");
 }
 
 void TestaBuscarPalavra()
 {
+    string[] arrayDePalavras = new string[5];
 
-    string[] arrayDePalavras = new string[5]; //Em new string[5] mostra que o array vai conter 5 palavras
     for (int i = 0; i < arrayDePalavras.Length; i++)
     {
-        System.Console.WriteLine($"Digite {i + 1} Palavra: ");
+        Console.Write($"Digite {i + 1}ª Palavra: ");
         arrayDePalavras[i] = Console.ReadLine();
     }
-    System.Console.WriteLine($"Digite a palavra a ser encontrada: ");
+
+    Console.Write("Digite palavara a ser encontrada: ");
     var busca = Console.ReadLine();
 
     foreach (string palavra in arrayDePalavras)
     {
         if (palavra.Equals(busca))
         {
-            System.Console.WriteLine($"Palavra encontrada = {busca}");
+            Console.WriteLine($"Palavra encontrada = {busca}.");
             break;
         }
-
     }
+
 }
 
-
-Array amostra = Array.CreateInstance(typeof(double), 5);//metodo createinstance precisamos determinar o tipo e o tamanho.
-amostra.SetValue(5.8, 0);
-amostra.SetValue(1.5, 1);
-amostra.SetValue(7.2, 2);
+Array amostra = new double[5];
+amostra.SetValue(5.9, 0);
+amostra.SetValue(1.8, 1);
+amostra.SetValue(7.1, 2);
 amostra.SetValue(10, 3);
-amostra.SetValue(5.8, 4);
+amostra.SetValue(6.9, 4);
 
-TestaMediana(amostra);
+//[5,9][1,8][7,1][10][6,9]
+//TestaMediana(amostra);
 
-static void TestaMediana(Array array)
+void TestaMediana(Array array)
 {
     if ((array == null) || (array.Length == 0))
     {
@@ -72,12 +74,36 @@ static void TestaMediana(Array array)
 
     int tamanho = numerosOrdenados.Length;
     int meio = tamanho / 2;
-    double mediana = (tamanho % 2 != 0) ? numerosOrdenados[meio] : (numerosOrdenados[meio] + numerosOrdenados[meio - 1]) / 2;
+    double mediana = (tamanho % 2 != 0) ? numerosOrdenados[meio] :
+                                   (numerosOrdenados[meio] + numerosOrdenados[meio - 1]) / 2;
     Console.WriteLine($"Com base na amostra a mediana = {mediana}");
 }
 
-int [] valores = {10,58,47,32};
-for (int i = 0; i < 5; i++)// vai retornar um erro por não existir 5 posições no array observar com atenção.
+int[] valores = { 10, 58, 36, 47 };
+
+for (int i = 0; i < 4; i++)
 {
-        System.Console.WriteLine(valores[i]);
+    Console.WriteLine(valores[i]);
 }
+
+// código anterior omitido
+
+static void TestaArrayDeContasCorrentes()
+{
+    ContaCorrente[] listaDeContas =
+    {
+        new(874, "5679787-A"),
+        new(874, "4456668-B"),
+        new(874, "7781438-C")
+    };
+
+    for(int i = 0; i < listaDeContas.Length; i++)
+    {
+        ContaCorrente contaAtual = listaDeContas[i];
+        Console.WriteLine($"Índice{i} - Conta:{contaAtual.Conta}");
+    }
+}
+
+
+TestaArrayDeContasCorrentes();
+
