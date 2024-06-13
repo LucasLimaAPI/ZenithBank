@@ -1,4 +1,5 @@
 ﻿using ZENITHBANK.Conta;
+using ZENITHBANK.Util;
 
 Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento.");
 //TestaArrayInt();
@@ -90,18 +91,14 @@ for (int i = 0; i < 4; i++)
 
 static void TestaArrayDeContasCorrentes()
 {
-    ContaCorrente[] listaDeContas =
-    {
-        new(874, "5679787-A"),
-        new(874, "4456668-B"),
-        new(874, "7781438-C")
-    };
+    ListaDeContasCorrentes listaDeContas = new();
+    listaDeContas.Adicionar(new ContaCorrente(874, "5679787-A"));
+    listaDeContas.Adicionar(new ContaCorrente(874, "4456668-B"));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
+    listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
 
-    for(int i = 0; i < listaDeContas.Length; i++)
-    {
-        ContaCorrente contaAtual = listaDeContas[i];
-        Console.WriteLine($"Índice{i} - Conta:{contaAtual.Conta}");
-    }
 }
 
 
