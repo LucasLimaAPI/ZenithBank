@@ -147,6 +147,9 @@ void AtendimentoCliente()
             case '1':
                 CadastrarConta();
                 break;
+            case '2':
+                ListarConta();    
+                break;
             default:
                 System.Console.WriteLine("Opcao não implementada.");
                 break;
@@ -186,6 +189,31 @@ void CadastrarConta()
     _listaDeContas.Add(conta);
     System.Console.WriteLine("... CONTA CADASTRADA COM SUCESSO ...");
     Console.ReadKey();
+}
 
+void ListarConta()
+{
+     Console.Clear();
+    System.Console.WriteLine();
+    System.Console.WriteLine("");
+    System.Console.WriteLine("");
+    System.Console.WriteLine("\n");
 
+    if(_listaDeContas.Count <=0)
+    {
+        System.Console.WriteLine("... Não há contas cadastradas! ...");
+        Console.ReadKey();
+        return;
+    }
+
+    foreach (ContaCorrente item in _listaDeContas)
+    {
+        System.Console.WriteLine("===  Dados da Conta  ===");
+        System.Console.WriteLine("Número da Conta: "+ item.Conta );
+        System.Console.WriteLine("Titular da Conta: "+ item.Titular.Nome);
+        System.Console.WriteLine("CPF do titular: " + item.Titular.Cpf);
+        System.Console.WriteLine("Profissão do Titular: "+ item.Titular.Profissao);
+        System.Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        Console.ReadKey();
+    }
 }
