@@ -1,0 +1,15 @@
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\bin\releas\net8.0\ZenithBank.exe
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\bin\releas\net8.0\ZenithBank.deps.json
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\bin\releas\net8.0\ZenithBank.runtimeconfig.json
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\bin\releas\net8.0\ZenithBank.dll
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\bin\releas\net8.0\ZenithBank.pdb
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.AssemblyInfoInputs.cache
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.AssemblyInfo.cs
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.csproj.CoreCompileInputs.cache
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.sourcelink.json
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.dll
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\refint\ZenithBank.dll
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.pdb
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ZenithBank.genruntimeconfig.cache
+C:\Users\lucas.oliveira\Desktop\C-\ZenithBank\ZenithBank\obj\releas\net8.0\ref\ZenithBank.dll

@@ -1,19 +1,17 @@
-﻿using ZENITHBANK.Conta;
+﻿using System.Collections;
+using System.Reflection.Metadata;
+using ZENITHBANK.Conta;
 using ZENITHBANK.Util;
 
 Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento.");
+//COM O #REGION PODEMOS MARCAR UMA AREA PARA MINIMIZALA
+#region Exemplos Arrays Em C#
 //TestaArrayInt();
 //TestaBuscarPalavra();
 
 void TestaArrayInt()
 {
-    int[] idades = new int[5];
-    idades[0] = 30;
-    idades[1] = 40;
-    idades[2] = 17;
-    idades[3] = 21;
-    idades[4] = 18;
-
+    int[] idades = [30, 40, 17, 21, 18];
     Console.WriteLine($"Tamanho do Array {idades.Length}");
 
     int acumulador = 0;
@@ -99,7 +97,7 @@ static void TestaArrayDeContasCorrentes()
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
 
-    var contaDoLucas = new ContaCorrente(988,"000000-1");
+    var contaDoLucas = new ContaCorrente(988, "000000-1");
     listaDeContas.Adicionar(contaDoLucas);
     // listaDeContas.ExibeLista();
     // System.Console.WriteLine("-------------------");
@@ -120,5 +118,74 @@ static void TestaArrayDeContasCorrentes()
 }
 
 
-TestaArrayDeContasCorrentes();
+// TestaArrayDeContasCorrentes();
+#endregion
 
+ArrayList _listaDeContas = [];
+
+AtendimentoCliente();
+void AtendimentoCliente()
+{
+    char opcao = 'O'; // char = ''
+    while (opcao != '6')
+    {
+        Console.Clear();
+        System.Console.WriteLine("-----------------------------------------");
+        System.Console.WriteLine("===            ATENDIMENTO            ===");
+        System.Console.WriteLine("===      .1 - CADASTRAR CONTA         ===");
+        System.Console.WriteLine("====     .2 - LISTAR CONTAS           ===");
+        System.Console.WriteLine("===      .3 - REMOVER CONTA           ===");
+        System.Console.WriteLine("===      .4 - ORDENAR CONTAS          ===");
+        System.Console.WriteLine("===      .5 - PESQUISAR CONTA         ===");
+        System.Console.WriteLine("===      .6 - SAIR DO SISTEMA         ===");
+        System.Console.WriteLine("-----------------------------------------");
+        System.Console.Write("\n\n");
+        Console.Write("Digite a opção desejada: ");
+        opcao = Console.ReadLine()[0];
+        switch (opcao)
+        {
+            case '1':
+                CadastrarConta();
+                break;
+            default:
+                System.Console.WriteLine("Opcao não implementada.");
+                break;
+        }
+    }
+}
+
+void CadastrarConta()
+{
+    Console.Clear();
+    System.Console.WriteLine("------------------------------------------");
+    System.Console.WriteLine("===         CADASTRO DE CONTAS         ===");
+    System.Console.WriteLine("-------------------------------------------");
+    System.Console.WriteLine("\n");
+    System.Console.WriteLine("===      INFORME OS DADOS DA CONTA      ===");
+
+    Console.Write("Número da conta: ");
+    string numeroConta = Console.ReadLine();
+
+    System.Console.WriteLine("Número da agencia: ");
+    int numeroAgencia = int.Parse(Console.ReadLine());
+
+    ContaCorrente conta = new(numeroAgencia, numeroConta);
+
+    System.Console.WriteLine("Informe o saldo inicial: ");
+    conta.Saldo = double.Parse(Console.ReadLine());
+
+    System.Console.WriteLine("Informe o nome do titular: ");
+    conta.Titular.Nome = Console.ReadLine();
+
+    System.Console.WriteLine("Informe o CPF do titular: ");
+    conta.Titular.Cpf = Console.ReadLine();
+
+    System.Console.WriteLine("Informe a profissão do titular: ");
+    conta.Titular.Profissao = Console.ReadLine();
+
+    _listaDeContas.Add(conta);
+    System.Console.WriteLine("... CONTA CADASTRADA COM SUCESSO ...");
+    Console.ReadKey();
+
+
+}
