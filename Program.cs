@@ -99,6 +99,12 @@ static void TestaArrayDeContasCorrentes()
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
 
+    var contaDoLucas = new ContaCorrente(988,"000000-1");
+    listaDeContas.Adicionar(contaDoLucas);
+    listaDeContas.ExibeLista();
+    System.Console.WriteLine("-------------------");
+    listaDeContas.Remover(contaDoLucas);
+    listaDeContas.ExibeLista();
 }
 
 

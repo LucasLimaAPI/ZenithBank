@@ -28,6 +28,6 @@ public class Cliente
 
     public Cliente()
     {
-        TotalClientesCadastrados = TotalClientesCadastrados + 1;
+        TotalClientesCadastrados++;
     }
 }

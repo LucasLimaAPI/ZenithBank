@@ -1,10 +1,10 @@
 namespace ZENITHBANK.Conta
 {
     public class ContaCorrente
-    {     
-       
-        public Cliente Titular{get;set;}
-        public string Nome_Agencia{ get; set; }
+    {
+
+        public Cliente Titular { get; set; }
+        public string Nome_Agencia { get; set; }
 
         private int _numero_agencia;
         public int Numero_agencia
@@ -15,7 +15,7 @@ namespace ZENITHBANK.Conta
             }
             set
             {
-                if(value <= 0)
+                if (value <= 0)
                 {
 
                 }
@@ -24,7 +24,7 @@ namespace ZENITHBANK.Conta
                     _numero_agencia = value;
                 }
             }
-        
+
         }
 
         private string _conta;
@@ -36,7 +36,7 @@ namespace ZENITHBANK.Conta
             }
             set
             {
-                if(value == null)
+                if (value == null)
                 {
                     return;
                 }
@@ -69,11 +69,11 @@ namespace ZENITHBANK.Conta
 
         public bool Sacar(double valor)
         {
-            if(saldo < valor)
+            if (saldo < valor)
             {
                 return false;
             }
-            if(valor < 0)
+            if (valor < 0)
             {
                 return false;
             }
@@ -93,13 +93,13 @@ namespace ZENITHBANK.Conta
             saldo = saldo + valor;
         }
 
-        public bool Transferir(double valor,ContaCorrente destino)
+        public bool Transferir(double valor, ContaCorrente destino)
         {
-            if(saldo < valor)
+            if (saldo < valor)
             {
                 return false;
             }
-            if(valor <0)
+            if (valor < 0)
             {
                 return false;
             }
@@ -110,8 +110,9 @@ namespace ZENITHBANK.Conta
                 return true;
             }
         }
-           
-        public ContaCorrente(int numero_agencia,string conta)
+
+        public ContaCorrente(int numero_agencia,
+                             string conta)
         {
             Numero_agencia = numero_agencia;
             Conta = conta;
@@ -125,7 +126,7 @@ namespace ZENITHBANK.Conta
         //public override bool Equals(object? conta)
         //{
         //    ContaCorrente outroConta = conta as ContaCorrente;
-            
+
         //    if (outroConta == null)
         //    {
         //        return false;
