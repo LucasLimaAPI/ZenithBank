@@ -1,3 +1,3 @@
 <p center>
- #LOADING
+  <b>LOADING</b>
 </p>
