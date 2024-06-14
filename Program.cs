@@ -101,10 +101,22 @@ static void TestaArrayDeContasCorrentes()
 
     var contaDoLucas = new ContaCorrente(988,"000000-1");
     listaDeContas.Adicionar(contaDoLucas);
-    listaDeContas.ExibeLista();
-    System.Console.WriteLine("-------------------");
-    listaDeContas.Remover(contaDoLucas);
-    listaDeContas.ExibeLista();
+    // listaDeContas.ExibeLista();
+    // System.Console.WriteLine("-------------------");
+    // listaDeContas.Remover(contaDoLucas);
+    // listaDeContas.ExibeLista();
+
+    for (int i = 0; i < listaDeContas.Tamanho; i++)
+    {
+        ContaCorrente conta = listaDeContas[i];
+        System.Console.WriteLine($"Indice [{i}] = {conta.Conta} / {conta.Numero_agencia}");
+    }
+
+
+
+
+
+
 }
 
 
