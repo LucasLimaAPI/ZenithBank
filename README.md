@@ -1,3 +1,3 @@
 <p align = "center">
-  <b>LOADING</b>
+  <b>LOADING...</b>
 </p>
