@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Reflection.Metadata;
 using ZENITHBANK.Conta;
 using ZENITHBANK.Util;
 
@@ -121,7 +120,13 @@ static void TestaArrayDeContasCorrentes()
 // TestaArrayDeContasCorrentes();
 #endregion
 
-ArrayList _listaDeContas = [];
+List<ContaCorrente> _listaDeContas = [
+    new(95,"123456-X"){Saldo= 150},
+    new(95,"954321-X"){Saldo = 200},
+    new(94,"578965-X"){Saldo = 10}
+
+];
+
 
 AtendimentoCliente();
 void AtendimentoCliente()
@@ -148,7 +153,7 @@ void AtendimentoCliente()
                 CadastrarConta();
                 break;
             case '2':
-                ListarConta();    
+                ListarConta();
                 break;
             default:
                 System.Console.WriteLine("Opcao não implementada.");
@@ -187,19 +192,20 @@ void CadastrarConta()
     conta.Titular.Profissao = Console.ReadLine();
 
     _listaDeContas.Add(conta);
+
     System.Console.WriteLine("... CONTA CADASTRADA COM SUCESSO ...");
     Console.ReadKey();
 }
 
 void ListarConta()
 {
-     Console.Clear();
+    Console.Clear();
     System.Console.WriteLine();
     System.Console.WriteLine("");
     System.Console.WriteLine("");
     System.Console.WriteLine("\n");
 
-    if(_listaDeContas.Count <=0)
+    if (_listaDeContas.Count <= 0)
     {
         System.Console.WriteLine("... Não há contas cadastradas! ...");
         Console.ReadKey();
@@ -209,11 +215,27 @@ void ListarConta()
     foreach (ContaCorrente item in _listaDeContas)
     {
         System.Console.WriteLine("===  Dados da Conta  ===");
-        System.Console.WriteLine("Número da Conta: "+ item.Conta );
-        System.Console.WriteLine("Titular da Conta: "+ item.Titular.Nome);
+        System.Console.WriteLine("Número da Conta: " + item.Conta);
+        System.Console.WriteLine("Saldo em conta: " + item.Saldo);
+        System.Console.WriteLine("Titular da Conta: " + item.Titular.Nome);
         System.Console.WriteLine("CPF do titular: " + item.Titular.Cpf);
-        System.Console.WriteLine("Profissão do Titular: "+ item.Titular.Profissao);
+        System.Console.WriteLine("Profissão do Titular: " + item.Titular.Profissao);
         System.Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         Console.ReadKey();
     }
 }
+
+Generica<int> teste1 = new();
+teste1.MostrarMensagem(10);
+
+
+Generica<string> teste2 = new();
+teste2.MostrarMensagem("Olá Mundo");
+public class Generica<T>
+{
+    public void MostrarMensagem(T t)
+    {
+        System.Console.WriteLine($"Exibindo {t}");
+    }
+}
+
