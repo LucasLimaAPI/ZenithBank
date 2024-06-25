@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using ZENITHBANK.Conta;
 using ZENITHBANK.Util;
+using ZENITHBANK.zenithbank.Exceptions;
 
 Console.WriteLine("Boas Vindas ao ZenithBank, Atendimento.");
 //COM O #REGION PODEMOS MARCAR UMA AREA PARA MINIMIZALA
@@ -85,7 +86,6 @@ for (int i = 0; i < 4; i++)
 }
 
 // código anterior omitido
-
 static void TestaArrayDeContasCorrentes()
 {
     ListaDeContasCorrentes listaDeContas = new();
@@ -108,58 +108,119 @@ static void TestaArrayDeContasCorrentes()
         ContaCorrente conta = listaDeContas[i];
         System.Console.WriteLine($"Indice [{i}] = {conta.Conta} / {conta.Numero_agencia}");
     }
-
-
-
-
-
-
 }
-
 
 // TestaArrayDeContasCorrentes();
 #endregion
 
 List<ContaCorrente> _listaDeContas = [
     new(95,"123456-X"){Saldo= 150},
-    new(95,"954321-X"){Saldo = 200},
-    new(94,"578965-X"){Saldo = 10}
+    new(95,"954321-Z"){Saldo = 200},
+    new(94,"578965-W"){Saldo = 10}
 
 ];
 
-
-AtendimentoCliente();
 void AtendimentoCliente()
 {
-    char opcao = 'O'; // char = ''
-    while (opcao != '6')
+    try
     {
-        Console.Clear();
-        System.Console.WriteLine("-----------------------------------------");
-        System.Console.WriteLine("===            ATENDIMENTO            ===");
-        System.Console.WriteLine("===      .1 - CADASTRAR CONTA         ===");
-        System.Console.WriteLine("====     .2 - LISTAR CONTAS           ===");
-        System.Console.WriteLine("===      .3 - REMOVER CONTA           ===");
-        System.Console.WriteLine("===      .4 - ORDENAR CONTAS          ===");
-        System.Console.WriteLine("===      .5 - PESQUISAR CONTA         ===");
-        System.Console.WriteLine("===      .6 - SAIR DO SISTEMA         ===");
-        System.Console.WriteLine("-----------------------------------------");
-        System.Console.Write("\n\n");
-        Console.Write("Digite a opção desejada: ");
-        opcao = Console.ReadLine()[0];
-        switch (opcao)
+        char opcao = 'O'; // char = ''
+        while (opcao != '6')
         {
-            case '1':
-                CadastrarConta();
-                break;
-            case '2':
-                ListarConta();
-                break;
-            default:
-                System.Console.WriteLine("Opcao não implementada.");
-                break;
+            Console.Clear();
+            System.Console.WriteLine("-----------------------------------------");
+            System.Console.WriteLine("===            ATENDIMENTO            ===");
+            System.Console.WriteLine("===      .1 - CADASTRAR CONTA         ===");
+            System.Console.WriteLine("====     .2 - LISTAR CONTAS           ===");
+            System.Console.WriteLine("===      .3 - REMOVER CONTA           ===");
+            System.Console.WriteLine("===      .4 - ORDENAR CONTAS          ===");
+            System.Console.WriteLine("===      .5 - PESQUISAR CONTA         ===");
+            System.Console.WriteLine("===      .6 - SAIR DO SISTEMA         ===");
+            System.Console.WriteLine("-----------------------------------------");
+            System.Console.Write("\n\n");
+            Console.Write("Digite a opção desejada: ");
+
+            try
+            {
+                opcao = Console.ReadLine()[0];
+            }
+            catch (Exception excecao)
+            {
+                throw new ZenithBankException(excecao.Message);
+            }
+
+            switch (opcao)
+            {
+                case '1':
+                    CadastrarConta();
+                    break;
+                case '2':
+                    ListarConta();
+                    break;
+                case '3':
+                    RemoverContas();
+                    break;
+                case '4':
+                    OdernarContas();
+                    break;
+                default:
+                    System.Console.WriteLine("Opcao não implementada.");
+                    break;
+            }
         }
     }
+    catch (ZenithBankException excecao)
+    {
+
+        System.Console.WriteLine($"{excecao.Message}");
+    }
+
+
+}
+
+void OdernarContas()
+{
+    _listaDeContas.Sort(); //ordena uma lista 
+    System.Console.WriteLine("... Lista de Contas Ordenada ...");
+    Console.ReadKey();
+}
+
+void RemoverContas()
+{
+    Console.Clear();
+    System.Console.WriteLine("==============================");
+    System.Console.WriteLine("===     REMOVER CONTAS     ===");
+    System.Console.WriteLine("==============================");
+    System.Console.WriteLine("\n");
+    System.Console.WriteLine("Informe o número da Conta: ");
+
+    string numeroConta = Console.ReadLine();
+    ContaCorrente conta = null;
+    bool contaEncontrada = false;
+
+    // Encontrar a conta a ser removida
+    foreach (var item in _listaDeContas)
+    {
+        if (item.Conta.Equals(numeroConta))
+        {
+            conta = item;
+            contaEncontrada = true;
+            break; // Não precisa continuar a interação se a conta for encotnrada
+        }
+    }
+
+    // Remover conta encontrada
+    if (contaEncontrada)
+    {
+        _listaDeContas.Remove(conta);
+        System.Console.WriteLine("... Conta removida da lista! ...");
+    }
+    else
+    {
+        System.Console.WriteLine("... Conta para remoção não encontrada ...");
+    }
+
+    Console.ReadKey();
 }
 
 void CadastrarConta()
@@ -225,17 +286,69 @@ void ListarConta()
     }
 }
 
-Generica<int> teste1 = new();
-teste1.MostrarMensagem(10);
+#region Testes de Uso do List
+// Generica<int> teste1 = new(); Código de teste
+// teste1.MostrarMensagem(10);
+
+// Generica<string> teste2 = new();
+// teste2.MostrarMensagem("Olá Mundo");
+
+// public class Generica<T>
+// {
+//     public void MostrarMensagem(T t)
+//     {
+//         System.Console.WriteLine($"Exibindo {t}");
+//     }
+// }
+
+// List<ContaCorrente> _listaDeContas2 =
+// [
+//     new ContaCorrente(874, "5679787-A"),
+//     new ContaCorrente(874, "4456668-B"),
+//     new ContaCorrente(874, "7781438-C")
+// ];
 
 
-Generica<string> teste2 = new();
-teste2.MostrarMensagem("Olá Mundo");
-public class Generica<T>
-{
-    public void MostrarMensagem(T t)
-    {
-        System.Console.WriteLine($"Exibindo {t}");
-    }
-}
+// List<ContaCorrente> _listaDeContas3 =
+// [
+//     new ContaCorrente(951, "5679787-E"),
+//     new ContaCorrente(321, "4456668-F"),
+//     new ContaCorrente(719, "7781438-G")
+// ];
+
+
+// _listaDeContas2.AddRange(_listaDeContas3);  //AddRange vai pegar uma lista e adicionar outra
+// _listaDeContas2.Reverse();// reverter este objeto
+
+// for (int i = 0; i < _listaDeContas2.Count; i++)
+// {
+//     System.Console.WriteLine($"Indice[{i}] Conta: [{_listaDeContas2[i].Conta}]");
+// }
+
+// System.Console.WriteLine("\n\n");
+
+// if (_listaDeContas3.Count > 0)
+// {
+//     var range = _listaDeContas3.GetRange(0, Math.Min(1, _listaDeContas3.Count));
+//     for (int i = 0; i < range.Count; i++)
+//     {
+//         System.Console.WriteLine($"Indice[{i}] = Conta: [{range[i].Conta}]");
+
+//     }
+
+//     _listaDeContas3.Clear();
+//     for (int i = 0; i < _listaDeContas3.Count; i++)
+//     {
+//         System.Console.WriteLine($"Indice[{i}] Conta [{range[i].Conta}]");
+//     }
+
+// }
+// else
+// {
+//     // Handle case where _listaDeContas3 is empty
+//     System.Console.WriteLine("Error: _listaDeContas3 is empty.");
+// }
+#endregion
+
+AtendimentoCliente();
 
