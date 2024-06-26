@@ -148,6 +148,15 @@ namespace ZENITHBANK.Conta
         //        Conta.Equals(outroConta.Conta);
         //}
 
+        public override string ToString()
+        {
+            return $"=== DADOS DA CONTA === \n"+
+                   $"Numero da Conta : {this.Conta}\n"+
+                   $"Saldo da Conta: {this.Saldo}\n" +
+                   $"Titular Da Conta: {this.Titular.Nome}\n"+
+                   $"CPF do Titular: {this.Titular.Cpf}\n"+
+                   $"Profissão do Titular: {this.Titular.Profissao}\n";
+        }
 
     }
 }
