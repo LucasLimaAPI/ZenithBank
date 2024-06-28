@@ -132,31 +132,42 @@ using ZENITHBANK.zenithbank.Exceptions;
     }
     ContaCorrente ConsultaPorNumeroConta(string? numeroConta)
     {
-        ContaCorrente conta = null;
-        for (int i = 0; i < _listaDeContas.Count; i++)
-        {
-            if (_listaDeContas[i].Conta.Equals(numeroConta))
-            {
-                conta = _listaDeContas[i];
-            }
-        }
+        //Ao invés disso:
 
-        return conta;
+        // ContaCorrente? conta = null;
+        // for (int i = 0; i < _listaDeContas.Count; i++)
+        // {
+        //     if (_listaDeContas[i].Conta.Equals(numeroConta))
+        //     {
+        //         conta = _listaDeContas[i];
+        //     }
+        // }
+        // return conta;
+
+        // Faça Isso:
+        return _listaDeContas.Where(conta => conta.Titular.Cpf == numeroConta).FirstOrDefault(); // metodo de extenção extende da classe link. 
     }
 
     ContaCorrente ConsultaPorCPFTitular(string? cpf)
     {
-        ContaCorrente conta = null;
-        for (int i = 0; i < _listaDeContas.Count; i++)
-        {
-            if (_listaDeContas[i].Titular.Cpf.Equals(cpf))
-            {
-                conta = _listaDeContas[i];
-            }
-        }
-        return conta;
+        //Ao invés disso:
+
+        // ContaCorrente conta = null;
+        // for (int i = 0; i < _listaDeContas.Count; i++)
+        // {
+        //     if (_listaDeContas[i].Titular.Cpf.Equals(cpf))
+        //     {
+        //         conta = _listaDeContas[i];
+        //     }
+        // }
+        // return conta;
+
+        // Faça Isso:
+        return _listaDeContas.Where(conta => conta.Titular.Cpf == cpf).FirstOrDefault(); // metodo de extenção extende da classe link. 
 
     }
+
+
 
     void OdernarContas()
     {
@@ -255,12 +266,13 @@ using ZENITHBANK.zenithbank.Exceptions;
 
         foreach (ContaCorrente item in _listaDeContas)
         {
-            Console.WriteLine("===  Dados da Conta  ===");
-            Console.WriteLine("Número da Conta: " + item.Conta);
-            Console.WriteLine("Saldo em conta: " + item.Saldo);
-            Console.WriteLine("Titular da Conta: " + item.Titular.Nome);
-            Console.WriteLine("CPF do titular: " + item.Titular.Cpf);
-            Console.WriteLine("Profissão do Titular: " + item.Titular.Profissao);
+            // Console.WriteLine("===  Dados da Conta  ===");
+            // Console.WriteLine("Número da Conta: " + item.Conta);
+            // Console.WriteLine("Saldo em conta: " + item.Saldo);
+            // Console.WriteLine("Titular da Conta: " + item.Titular.Nome);
+            // Console.WriteLine("CPF do titular: " + item.Titular.Cpf);
+            // Console.WriteLine("Profissão do Titular: " + item.Titular.Profissao);
+            System.Console.WriteLine(item.ToString());
             Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             Console.ReadKey();
         }
