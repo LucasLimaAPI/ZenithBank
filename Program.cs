@@ -101,7 +101,7 @@ using ZENITHBANK.zenithbank.Exceptions;
         Console.WriteLine("===     PESQUISAR CONTAS     ===");
         Console.WriteLine("================================");
         Console.WriteLine("\n");
-        Console.WriteLine("Deseja pesquisar por (1) NUMERO DA CONTA ou (2) CPF TITULAR? ");
+        Console.WriteLine("Deseja pesquisar por (1) N° DA CONTA ou (2) CPF TITULAR (3) N° DA AGÊNCIA? ");
         switch (int.Parse(Console.ReadLine()))
         {
             case 1:
@@ -120,6 +120,16 @@ using ZENITHBANK.zenithbank.Exceptions;
                     ContaCorrente ConsultaCpf = ConsultaPorCPFTitular(_cpf);
                     Console.WriteLine(ConsultaCpf.ToString());
 
+                    Console.ReadKey();
+                    break;
+
+                }
+            case 3:
+                {
+                    System.Console.WriteLine("Informe o N° da Agência: ");
+                    int _numeroAgencia = int.Parse(Console.ReadLine());
+                    var contasPorAgencia = ConsultaPorAgencia(_numeroAgencia);
+                    ExibirListadeContas(contasPorAgencia);
                     Console.ReadKey();
                     break;
 
@@ -145,7 +155,7 @@ using ZENITHBANK.zenithbank.Exceptions;
         // return conta;
 
         // Faça Isso:
-        return _listaDeContas.Where(conta => conta.Titular.Cpf == numeroConta).FirstOrDefault(); // metodo de extenção extende da classe link. 
+        return _listaDeContas.Where(conta => conta.Titular.Cpf == numeroConta).FirstOrDefault(); // metodo de extenção extende da classe linQ. 
     }
 
     ContaCorrente ConsultaPorCPFTitular(string? cpf)
@@ -167,8 +177,29 @@ using ZENITHBANK.zenithbank.Exceptions;
 
     }
 
+    List<ContaCorrente> ConsultaPorAgencia(int numeroAgencia)
+    {
+        var consulta = (
+                             from conta in _listaDeContas
+                             where conta.Numero_agencia == numeroAgencia
+                             select conta).ToList();
+        return consulta;
+    }
 
+    void ExibirListadeContas(List<ContaCorrente> contasPorAgencia)
+    {
+        if (contasPorAgencia == null)
+        {
+            System.Console.WriteLine("... A consulta não retornou dados ...");
+        }else
+        {
+            foreach (var item in contasPorAgencia)
+            {
+                System.Console.WriteLine(item.ToString());
+            }
+        }
 
+    }
     void OdernarContas()
     {
         _listaDeContas.Sort(); //ordena uma lista 
@@ -344,6 +375,7 @@ using ZENITHBANK.zenithbank.Exceptions;
 
     AtendimentoCliente();
 }
+
 
 
 

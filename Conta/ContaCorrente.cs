@@ -152,6 +152,7 @@ namespace ZENITHBANK.Conta
         {
             return $"=== DADOS DA CONTA === \n"+
                    $"Numero da Conta : {this.Conta}\n"+
+                   $"Numero da Agência : {this.Numero_agencia}\n"+
                    $"Saldo da Conta: {this.Saldo}\n" +
                    $"Titular Da Conta: {this.Titular.Nome}\n"+
                    $"CPF do Titular: {this.Titular.Cpf}\n"+
