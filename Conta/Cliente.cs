@@ -2,6 +2,8 @@ namespace ZENITHBANK.Conta;
 
 public class Cliente
 {
+        #nullable disable
+
 
     public string Cpf { get; set; }
 

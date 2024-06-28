@@ -2,7 +2,7 @@ namespace ZENITHBANK.Conta
 {
     public class ContaCorrente:IComparable<ContaCorrente> // Icomparable permite que usemos o metodo tocompare;
     {
-
+#nullable disable
         public Cliente Titular { get; set; }
         public string Nome_Agencia { get; set; }
 
@@ -111,7 +111,7 @@ namespace ZENITHBANK.Conta
             }
         }
 
-        public int CompareTo(ContaCorrente? outro)
+        public int CompareTo(ContaCorrente outro)
         {
             if (outro==null)
             {
@@ -128,6 +128,16 @@ namespace ZENITHBANK.Conta
         {
             Numero_agencia = numero_agencia;
             Conta = conta;
+            Titular = new Cliente();
+            TotalDeContasCriadas += 1;
+
+        }
+
+        
+        public ContaCorrente(int numero_agencia)
+        {
+            Numero_agencia = numero_agencia;
+            Conta = Guid.NewGuid().ToString()[..8];
             Titular = new Cliente();
             TotalDeContasCriadas += 1;
 

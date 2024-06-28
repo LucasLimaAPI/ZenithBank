@@ -3,6 +3,8 @@ namespace ZENITHBANK.Util;
 //Encapsulamento dos arrays.
 public class ListaDeContasCorrentes(int tamanhoInicial = 5)
 {
+        #nullable disable
+
     private ContaCorrente[] _itens = new ContaCorrente[tamanhoInicial];
     private int _proximaPosicao = 0;
 
